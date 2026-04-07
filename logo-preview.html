@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perth Ute Centre – Logo Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a1a1a;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #ff6a00;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Preview panels */
+    .previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel-label {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* White background preview */
+    .preview-white {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Dark background preview */
+    .preview-dark {
+      background: #111111;
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #333;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Orange background preview (sticker simulation) */
+    .preview-sticker {
+      background: #ff6a00;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 40px rgba(255,106,0,0.3);
+    }
+
+    .preview-white img,
+    .preview-dark img,
+    .preview-sticker img {
+      width: 380px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Small sticker size preview */
+    .preview-small img {
+      width: 160px;
+    }
+
+    /* Download section */
+    .downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(255,106,0,0.4);
+    }
+
+    .btn-svg {
+      background: #ff6a00;
+      color: #000;
+    }
+
+    .btn-png-white {
+      background: #ffffff;
+      color: #000;
+    }
+
+    .btn-png-dark {
+      background: #2d2d2d;
+      color: #ffffff;
+      border: 1px solid #444;
+    }
+
+    .btn-png-transparent {
+      background: linear-gradient(135deg, #555 25%, #333 25%, #333 50%, #555 50%, #555 75%, #333 75%);
+      background-size: 10px 10px;
+      color: #fff;
+      border: 1px solid #666;
+    }
+
+    .icon { font-size: 16px; }
+
+    /* Info bar */
+    .info {
+      color: #555;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .info span { color: #ff6a00; }
+
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Perth Ute Centre – Logo Preview</h1>
+
+  <div class="previews">
+    <div class="panel">
+      <div class="panel-label">On White</div>
+      <div class="preview-white">
+        <img id="logoImg" src="perth-ute-centre-logo.svg" alt="Perth Ute Centre Logo">
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">On Dark</div>
+      <div class="preview-dark">
+        <img src="perth-ute-centre-logo.svg" alt="Perth Ute Centre Logo">
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">Sticker Size</div>
+      <div class="preview-white preview-small">
+        <img src="perth-ute-centre-logo.svg" alt="Perth Ute Centre Logo">
+      </div>
+    </div>
+  </div>
+
+  <div class="downloads">
+    <a class="btn btn-svg" href="perth-ute-centre-logo.svg" download="perth-ute-centre-logo.svg">
+      <span class="icon">⬇</span> Download SVG (Vector)
+    </a>
+    <button class="btn btn-png-white" onclick="downloadPNG('white')">
+      <span class="icon">⬇</span> Download PNG – White BG
+    </button>
+    <button class="btn btn-png-dark" onclick="downloadPNG('dark')">
+      <span class="icon">⬇</span> Download PNG – Dark BG
+    </button>
+    <button class="btn btn-png-transparent" onclick="downloadPNG('transparent')">
+      <span class="icon">⬇</span> Download PNG – Transparent
+    </button>
+  </div>
+
+  <div class="info">
+    <strong style="color:#ccc;">File:</strong> <span>perth-ute-centre-logo.svg</span> &nbsp;|&nbsp;
+    <strong style="color:#ccc;">Format:</strong> <span>Scalable Vector (SVG)</span> &nbsp;|&nbsp;
+    <strong style="color:#ccc;">Size:</strong> <span>800 × 500</span><br>
+    SVG is infinitely scalable — perfect for print, stickers, signage, and digital use at any size.
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function downloadPNG(bg) {
+      const canvas = document.getElementById('canvas');
+      const scale = 3; // 3× for high-res (2400×1500px)
+      canvas.width  = 800 * scale;
+      canvas.height = 500 * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(scale, scale);
+
+      // Fill background
+      if (bg === 'white') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 800, 500);
+      } else if (bg === 'dark') {
+        ctx.fillStyle = '#111111';
+        ctx.fillRect(0, 0, 800, 500);
+      }
+      // transparent = no fill
+
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, 800, 500);
+        const link = document.createElement('a');
+        const suffix = bg === 'white' ? 'white-bg' : bg === 'dark' ? 'dark-bg' : 'transparent';
+        link.download = `perth-ute-centre-logo-${suffix}@3x.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      // Use blob to avoid CORS issues with local SVG
+      fetch('perth-ute-centre-logo.svg')
+        .then(r => r.text())
+        .then(svgText => {
+          const blob = new Blob([svgText], {type: 'image/svg+xml'});
+          img.src = URL.createObjectURL(blob);
+        });
+    }
+  </script>
+
+</body>
+</html>
